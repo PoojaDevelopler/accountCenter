@@ -27,18 +27,19 @@ final class accountCenterUITestsLaunchTests: XCTestCase {
         
         userName.tap()
         userName.typeText("pooja")
-        XCTAssertTrue(pass.exists)
+        
+        let pass = app.textFields["text2"]
+        XCTAssertTrue(pass.waitForExistence(timeout: 1)) // Wait for the text field to appear
         
         pass.tap()
         pass.typeText("1232838937")
         
         let doneButton = app.buttons["Done"]
-        XCTAssertTrue(doneButton.exists)
+        XCTAssertTrue(doneButton.waitForExistence(timeout: 1)) // Wait for the button to appear
         doneButton.tap()
 
-        //make fail
-//        let title = app.staticTexts["Welcome-fail"]
-//        XCTAssertTrue(title.exists , "Welcomelabel not found")
+        let title = app.staticTexts["Welcome"]
+        XCTAssertTrue(title.exists , "Welcomelabel not found")
         
     }
 }
